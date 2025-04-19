@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Unidade(models.Model):
+class Academia(models.Model):
     cidade = models.CharField(max_length=50)
     bairro = models.CharField(max_length=50)
     rua = models.CharField(max_length=100)
@@ -15,18 +15,18 @@ class Professor(models.Model):
     cpf = models.CharField(max_length=14, unique=True)
     email = models.EmailField(unique=True)
     telefone = models.CharField(max_length=20)
-    unidade = models.ForeignKey(Unidade, on_delete=models.CASCADE, related_name="professores")
+    unidade = models.ForeignKey(Academia, on_delete=models.CASCADE, related_name="professores")
 
 class Aluno(models.Model):
     nome = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     data_nascimento = models.DateField()
-    unidade = models.ForeignKey(Unidade, on_delete=models.CASCADE, related_name="alunos")
+    unidade = models.ForeignKey(Academia, on_delete=models.CASCADE, related_name="alunos")
 
 class Treino(models.Model):
     nome = models.CharField(max_length=50)
     aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE, related_name="treinos")
-    professor = models.ForeignKey(Professor, on_delete=models.SET_NULL, related_name="treinos")
+    professor = models.ForeignKey(Professor, on_delete=models.SET_NULL, related_name="treinos", null=True)
 
 class Exercicio(models.Model):
     nome = models.CharField(max_length=50)
