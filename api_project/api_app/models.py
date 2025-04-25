@@ -16,13 +16,13 @@ class Professor(models.Model):
     cpf = models.CharField(max_length=14, unique=True)
     email = models.EmailField(unique=True)
     telefone = models.CharField(max_length=20)
-    unidade = models.ForeignKey(Academia, on_delete=models.CASCADE, related_name="professores")
+    academia = models.ForeignKey(Academia, on_delete=models.CASCADE, related_name="professores")
 
 class Aluno(models.Model):
     nome = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     data_nascimento = models.DateField()
-    unidade = models.ForeignKey(Academia, on_delete=models.CASCADE, related_name="alunos")
+    academia = models.ForeignKey(Academia, on_delete=models.CASCADE, related_name="alunos")
 
 class Treino(models.Model):
     nome = models.CharField(max_length=50)
