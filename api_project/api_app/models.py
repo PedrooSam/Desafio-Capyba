@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Academia(models.Model):
+    nome = models.CharField(max_length=50)
     cidade = models.CharField(max_length=50)
     bairro = models.CharField(max_length=50)
     rua = models.CharField(max_length=100)
