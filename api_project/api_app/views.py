@@ -42,19 +42,16 @@ class ExercicioTreinoViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         #obterm os parâmetros da requisição
         ordenar = self.request.query_params.get('ordenar', None)
-        treino_id = self.request.queryparams.get('treino_id', None)
+        treino_id = self.request.query_params.get('treino_id', None)
+
+        #Filtra pelo parâmetro "treino_id" e o torna obrigatório
+        if treino_id:
+            queryset = self.queryset.filter(treino_id=treino_id)
+        else:
+            queryset = self.queryset.none()
 
         #Ordena os exercícios caso o parâmetro "ordenar" seja passado
         if ordenar:
-            queryset = self.queryset.order_by('ordem')
-        else:
-            queryset = self.queryset
-
-        #Filtra pelo parâmetro "treino_id" e o torna obrigatório, retornando um erro caso não seja passado
-        if treino_id:
-            queryset = queryset.filter(treino_id = treino_id)
-        else:
-            data = {"detail": "O parâmetro 'treino_id' é obrigatório."}
-            return Response(data, status=status.HTTP_400_BAD_REQUEST)
+            queryset = queryset.order_by('ordem')
 
         return queryset

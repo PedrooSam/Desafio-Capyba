@@ -2,7 +2,7 @@ from rest_framework.test import APITestCase
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import get_user_model
-from .models import *
+from ..models import *
 
 User = get_user_model()
 
@@ -39,7 +39,7 @@ class AcademiaAPITestes(APITestCase):
         #Adiciona o token
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {self.token}')
 
-        self.academia_data['email'] = "email@ironberg.com"
+        self.academia_data['email'] = "email@academiaironberg.com"
 
         #Faz a requisição
         response = self.client.post(self.url, self.academia_data, format='json')
@@ -62,17 +62,18 @@ class AcademiaAPITestes(APITestCase):
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {self.token}')
 
         response = self.client.get(self.url, format='json')
+        response_data = response.json()['results']
 
         #Verifica se as informações estão corretas
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), 1)
 
-        self.assertEqual(response.data[0]["nome"], self.academia_data["nome"])
-        self.assertEqual(response.data[0]["cidade"], self.academia_data["cidade"])
-        self.assertEqual(response.data[0]["bairro"], self.academia_data["bairro"])
-        self.assertEqual(response.data[0]["rua"], self.academia_data["rua"])
-        self.assertEqual(response.data[0]["numero"], self.academia_data["numero"])
-        self.assertEqual(response.data[0]["telefone"], self.academia_data["telefone"])
+        self.assertEqual(response_data[0]["nome"], self.academia_data["nome"])
+        self.assertEqual(response_data[0]["cidade"], self.academia_data["cidade"])
+        self.assertEqual(response_data[0]["bairro"], self.academia_data["bairro"])
+        self.assertEqual(response_data[0]["rua"], self.academia_data["rua"])
+        self.assertEqual(response_data[0]["numero"], self.academia_data["numero"])
+        self.assertEqual(response_data[0]["telefone"], self.academia_data["telefone"])
         self.assertEqual(response.data[0]["email"], self.academia_data["email"])
 
 
@@ -106,7 +107,7 @@ class AcademiaAPITestes(APITestCase):
 
         #Verifica se as informações estão corretas
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data["nome"], "Iron Berg 2")
+        self.assertEqual(response.data["nome"], update_data['nome'])
 
 
     def test_delete_academia(self):

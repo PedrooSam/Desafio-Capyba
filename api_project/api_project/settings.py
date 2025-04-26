@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
+    #drf spectacular
+    'drf_spectacular',
     #Local Apps
     'api_app'
 ]
@@ -59,7 +61,10 @@ REST_FRAMEWORK = {
 
     #Configuração de paginação padrão com tamanho 10
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 10,
+
+    #Configuração do drf spectacular
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
 }
 
 
