@@ -115,33 +115,30 @@ A API oferece diversos endpoints para gestão de academias, professores, alunos,
 
 ## 📝 **Como Rodar o Projeto**
 
-### 1. **Clone o repositório**
-
-Clone o repositório para sua máquina local:
-
-```bash
+**1. Clone o repositório para sua máquina local:**
+```
 git clone https://github.com/usuario/mini-mundo-da-academia.git
 ```
-Crie um ambiente virtual e ative-o:
+**2. Crie um ambiente virtual e ative-o:**
 ```
-python3 -m venv venv
+python -m venv venv
 ```
 ```
 venv\Scripts\activate
 ```
-Instale as dependências do projeto:
+**3. Instale as dependências do projeto:**
 ```
 python -r requirements.txt
 ```
-Entre na pasta do projeto:
+**4. Entre na pasta do projeto:**
 ```
 cd api_project
 ```
-Faça as migrações do banco de dados:
+**5. Faça as migrações do banco de dados:**
 ```
 python manage.py migrate
 ```
-Por fim, inicialize o projeto:
+**6. Por fim, inicialize o projeto:**
 ```
 python manage.py runserver
 ```
