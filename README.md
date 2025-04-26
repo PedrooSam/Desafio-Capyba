@@ -1,6 +1,6 @@
 # **Gym Master**
 
-**o Gym Master é um sistema de gerenciamento focado em redes de academias (como por exemplo a SmartFit). O sistema permite o cadastro e manipulação da informação de diversas unidades de academias, além de alunos e professores. No mais, o sistema também possui um registro de exercícios e dos treinos dos alunos, que contém exercícios e podem ser gerenciados pelos professores.
+O Gym Master é um sistema de gerenciamento focado em redes de academias (como por exemplo a SmartFit). O sistema permite o cadastro e manipulação da informação de diversas unidades de academias, além de alunos e professores. No mais, o sistema também possui um registro de exercícios e dos treinos dos alunos, que podem ser gerenciados pelos professores.
 
 ## 🧩 **Funcionalidades Implementadas**
 
@@ -41,10 +41,17 @@
   - Implementação de filtro para retornar os exercícios registrados em cada treino especificamente.
  
 - **Ordenação**
-  - Parâmetro opcional de ordenação dos exercícios do treino pela ordem que o professor planejou para exxecução.
+  - Parâmetro opcional de ordenação dos exercícios do treino pela ordem que o professor planejou para execução.
 
-- **Documentação Interativa**:
-  - A documentação da API foi gerada usando **DRF Spectacular**, proporcionando uma interface interativa com **Swagger UI**.
+- **Testes para todos os endpoints**
+  - Testes automatizados para checar a integridade do código em vários casos de uso.
+
+- **Documentação**:
+  - A documentação da API gerada usando **DRF Spectacular**, proporcionando uma interface interativa com **Swagger UI**.
+
+  - **Como acessar a documentação**
+    - /schema/ - URL para baixar a documentação
+    - /docs/ - URL para acessar a documentação online
 
 
 ## 🚀 **Tecnologias Utilizadas**
@@ -114,6 +121,27 @@ Clone o repositório para sua máquina local:
 
 ```bash
 git clone https://github.com/usuario/mini-mundo-da-academia.git
+```
+Crie um ambiente virtual e ative-o:
+```
+python3 -m venv venv
+```
+```
+venv\Scripts\activate
+```
+Instale as dependências do projeto:
+```
+python -r requirements.txt
+```
+Entre na pasta do projeto:
+```
 cd api_project
-
-
+```
+Faça as migrações do banco de dados:
+```
+python manage.py migrate
+```
+Por fim, inicialize o projeto:
+```
+python manage.py runserver
+```
