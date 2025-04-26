@@ -47,14 +47,19 @@ INSTALLED_APPS = [
 
 #Configurações do Rest Framework para autenticação JWT
 REST_FRAMEWORK = {
+    #Implementa autenticação jwt 
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-    
+
     #Define a autenticação por token como padrão
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
-    )
+    ),
+
+    #Configuração de paginação padrão com tamanho 10
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
 }
 
 
